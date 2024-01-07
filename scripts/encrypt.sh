@@ -29,7 +29,7 @@ echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml
 sudo systemctl restart snap.microk8s.daemon-kubelite
 
 # Replace old secrets - if any
-kubectl get secrets --all-namespaces -o json | kubectl replace -f -
+microk8s kubectl get secrets --all-namespaces -o json | microk8s kubectl replace -f -
 
 
 EOF
