@@ -1,0 +1,1 @@
+set $(microk8s version); export revision=$4;

@@ -4,3 +4,4 @@ cf_token.txt
 cluster-ips.txt
 init.sh
 ssh.users
+encryption.key

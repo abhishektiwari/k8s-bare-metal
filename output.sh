@@ -11,3 +11,4 @@ bash cloudflared.sh >> ../init.sh
 bash ufw-basic.sh >> ../init.sh
 bash ufw-cluster.sh >> ../init.sh
 bash httpbin.sh >> ../init.sh
+bash encrypt.sh >> ../init.sh
