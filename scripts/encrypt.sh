@@ -1,10 +1,9 @@
 cat <<EOF
 
 # Encrypting secrets at rest in microK8s
-
 sudo -i -u `head -1 ./data/ssh.users`
 
-echo "---
+sudo echo "---
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
@@ -23,7 +22,7 @@ resources:
 $(<./data/revision)
 
 # Append encryption provider to API Server args file 
-echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml" >> $(<./data/apiserver)
+sudo echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml" >> $(<./data/apiserver)
 
 # Restart kubelite
 sudo systemctl restart snap.microk8s.daemon-kubelite
