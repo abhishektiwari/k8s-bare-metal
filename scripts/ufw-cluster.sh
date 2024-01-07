@@ -1,9 +1,13 @@
 cat <<EOF
-
-for x in `cat ./cluster-ips.txt`;
-    do
-        ufw sudo ufw allow from $x
+# Allow all traffic from cluster node IPs
+EOF
+for ip in `cat ./data/cluster-ips.txt`;
+do
+cat <<EOF
+sudo ufw sudo ufw allow from ${ip}
+EOF
 done
-ufw reload > /dev/null
-
+cat <<EOF
+# Reload the update firewall
+sudo ufw reload
 EOF

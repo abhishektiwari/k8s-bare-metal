@@ -1,22 +1,18 @@
 cat <<EOF
-
-# Install Microk8s and configure it
+# Install microk8s
 sudo apt install snapd -y
 sudo snap install microk8s --classic --channel=1.29
-sudo usermod -a -G microk8s ubuntu
-sudo chown -f -R ubuntu ~/.kube
-sudo usermod -a -G microk8s abhishek
-sudo chown -f -R abhishek ~/.kube
+EOF
+for user in `cat ./data/ssh.users`;
+do
+cat <<EOF
+
+# Configure user ${user}
+sudo usermod -a -G microk8s ${user}
+sudo chown -f -R ${user} ~/.kube
 
 sudo microk8s status --wait-ready
-sudo echo "alias kubectl='microk8s kubectl'" >> /home/abhishek/.bash_aliases
-sudo echo "alias kubectl='microk8s kubectl'" >> /home/ubuntu/.bash_aliases
-
-sudo microk8s enable prometheus
-sudo microk8s enable helm
-sudo microk8s enable hostpath-storage
-sudo microk8s enable community
-sudo microk8s enable cloudnative-pg
-sudo microk8s enable ha-cluster
+sudo echo "alias kubectl='microk8s kubectl'" >> /home/${user}/.bash_aliases
 
 EOF
+done

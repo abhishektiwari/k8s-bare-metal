@@ -2,4 +2,5 @@ authorized_keys
 ca.pub
 cf_token.txt
 cluster-ips.txt
-user_data.sh
+init.sh
+ssh.users

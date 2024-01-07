@@ -1,12 +1,13 @@
-rm -f user_data.sh
+rm -f init.sh
 cd scripts
 
 # Disable any scripts not required
-bash update.sh >> ../user_data.sh
-bash users.sh >> ../user_data.sh
-bash sshd.sh >> ../user_data.sh
-bash microk8s.sh >> ../user_data.sh
-bash cloudflared.sh >> ../user_data.sh
-bash ufw-basic.sh >> ../user_data.sh
-# bash ufw-cluster.sh >> ../user_data.sh
-bash httpbin.sh >> ../user_data.sh
+bash update.sh >> ../init.sh
+bash users.sh >> ../init.sh
+bash sshd.sh >> ../init.sh
+bash microk8s.sh >> ../init.sh
+bash mk8s-addons.sh >> ../init.sh
+bash cloudflared.sh >> ../init.sh
+bash ufw-basic.sh >> ../init.sh
+bash ufw-cluster.sh >> ../init.sh
+bash httpbin.sh >> ../init.sh
