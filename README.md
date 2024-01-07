@@ -15,14 +15,17 @@ Network connectivity between nodes can be private or public although private con
 # Step-by-step
 
 ## Add files into data folder
+See `example` files for your reference.
 
 * `authorized_keys` [Required] - Public keys of the user for ssh. Each key on a new line.
-* `cluster-ips.txt` - List of IPs for `microk8s` cluster nodes. Each IP on a new line.
+* `ssh.users` [Required] - List of users to enabled for SSH on node. Each user on a new line.
+* `cluster-ips.txt` [Optional] - List of IPs for `microk8s` cluster nodes. Each IP on a new line.
+* `cf_token.txt` [Optional]- Cloudflare token to setting up [tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-remote-tunnel/)
+* `ca.pub` [Optional]- Cloudflare short-lived certificate [public key](https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates/) for SSH via [native terminal](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/#native-terminal) and/or [browser-rendered terminal](https://developers.cloudflare.com/cloudflare-one/applications/non-http/#rendering-in-the-browser).
 
-**Optional:** Use Cloudflare Tunnels to: (1) Connect cluster nodes with SSH. (2) Expose a Kubernetes app/service to the internet.
 
-* `cf_token.txt` - Cloudflare token to setting up [tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/get-started/create-remote-tunnel/)
-* `ca.pub` - Cloudflare short-lived certificate [public key](https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates/) for SSH via [native terminal](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/#native-terminal) and/or [browser-rendered terminal](https://developers.cloudflare.com/cloudflare-one/applications/non-http/#rendering-in-the-browser).
+
+You can use Cloudflare tunnels to: (1) Connect cluster nodes with SSH. (2) Expose a Kubernetes app/service to the internet.
 
 Setup also includes a Kubernetes manifest file to deploy [httpbin](https://httpbin.org) service so you can test everything is working as expected. 
 
