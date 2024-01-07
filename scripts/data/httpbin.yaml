@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {}
+  name: httpbin
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpbin
+  template:
+    metadata:
+      labels:
+        app: httpbin
+    spec:
+      containers:
+      - image: kennethreitz/httpbin
+        imagePullPolicy: Always
+        name: httpbin
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  name: httpbin-svc
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: httpbin
+  type: ClusterIP
