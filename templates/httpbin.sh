@@ -4,8 +4,8 @@ cat <<EOF
 # Alternatively source user from ssh.users list
 # /home/`head -1 ./data/ssh.users`/encrypt.yaml
 
-echo "$(<./data/httpbin.yaml)" > /home/ubuntu/httpbin.yaml
+sudo echo "$(<./data/httpbin.yaml)" > /root/httpbin.yaml
 
-micrkk8s kubectl apply -f /home/ubuntu/httpbin.yaml
+sg microk8s -c 'sudo micrkk8s kubectl apply -f /root/httpbin.yaml'
 
 EOF
