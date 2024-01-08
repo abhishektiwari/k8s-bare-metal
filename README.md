@@ -60,3 +60,9 @@ This will return some joining instructions which should be executed on the other
 
 For more information on clustering [see](https://microk8s.io/docs/clustering)
 
+
+## Test scripts using Multipass
+
+```
+bash test.sh
+```

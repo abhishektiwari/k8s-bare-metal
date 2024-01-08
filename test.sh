@@ -1,0 +1,1 @@
+multipass launch focal --name k8s-master --cloud-init cloud-config.yaml
