@@ -2,7 +2,7 @@ cat <<EOF
 
 # Enable microk8s required add-ons
 # Comment out if any addons not applicable to your use case
-sudo microk8s enable prometheus
+sudo microk8s enable observability
 sudo microk8s enable helm
 sudo microk8s enable hostpath-storage
 sudo microk8s enable community
