@@ -1,5 +1,8 @@
 multipass delete k8s-master-1
 multipass purge
 multipass launch focal --name k8s-master-1 -vvvv --timeout 600
+echo "k8s-master-1 created"
 multipass transfer init.sh k8s-master-1:
-multipass exec k8s-master-1 -d /home/ubuntu -- sudo -i bash init.sh
+echo "Added init.sh to k8s-master-1"
+multipass exec k8s-master-1 -d /home/ubuntu -- sudo -i bash /home/ubuntu/init.sh
+echo "Finished running init.sh"
