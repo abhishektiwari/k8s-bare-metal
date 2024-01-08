@@ -1,8 +1,8 @@
 rm -f init.sh
 rm -f cloud-config.yaml
-cd scripts
+cd templates
 
-# Disable any scripts not required
+# Disable any template block not required
 bash update.sh >> ../init.sh
 bash users.sh >> ../init.sh
 bash sshd.sh >> ../init.sh

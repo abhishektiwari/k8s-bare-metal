@@ -7,3 +7,4 @@ ssh.users
 encryption.key
 cloud-config.yaml
 channel
+.DS_Store
