@@ -10,5 +10,5 @@ cat << EOF
   permissions: '0755'
 
 runcmd:
-- [ sh, root, "/usr/local/bin/init.sh" ]
+- [ sh, "/usr/local/bin/init.sh" ]
 EOF
