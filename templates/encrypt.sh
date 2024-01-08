@@ -19,15 +19,15 @@ resources:
 # Find location of API Server args file by running: pgrep -an kubelite
 # Find microk8s revision which can be found by running: microk8s version
 
-$(<./partial/revision)
+$(<./partials/revision)
 
 # Append encryption provider to API Server args file 
-if grep -E "^--encryption-provider-config" $(<./partial/apiserver)
+if grep -E "^--encryption-provider-config" $(<./partials/apiserver)
 then
     sudo echo "Encryption at rest for secret already configured"
 else
     sudo echo "Encryption at rest for secret not configured"
-    sudo echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml" >> $(<./partial/apiserver)
+    sudo echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml" >> $(<./partials/apiserver)
     # Restart kubelite
     sudo systemctl restart snap.microk8s.daemon-kubelite
     # Replace old secrets - if any
