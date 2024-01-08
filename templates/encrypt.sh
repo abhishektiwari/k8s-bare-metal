@@ -33,7 +33,7 @@ else
     # Restart kubelite
     sudo systemctl restart snap.microk8s.daemon-kubelite
     # Replace old secrets - if any
-    # sg microk8s -c 'sudo microk8s kubectl get secrets --all-namespaces -o json | microk8s kubectl replace -f -'
+    # sg microk8s -c 'sudo microk8s kubectl get secrets --all-namespaces -o json | sudo microk8s kubectl replace -f -'
 fi
 
 EOF

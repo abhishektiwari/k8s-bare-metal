@@ -6,6 +6,6 @@ cat <<EOF
 
 sudo echo "$(<./data/httpbin.yaml)" > /root/httpbin.yaml
 
-sg microk8s -c 'sudo micrkk8s kubectl apply -f /root/httpbin.yaml'
+sg microk8s -c 'sudo microk8s kubectl apply -f /root/httpbin.yaml'
 
 EOF

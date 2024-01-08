@@ -14,5 +14,9 @@ sudo microk8s enable argocd
 # sudo microk8s enable keda
 # sudo microk8s enable minio
 # sudo microk8s enable cert-manager
+# sudo microk8s enable cis-hardening
+# sudo microk8s enable ingress
+# sudo microk8s enable mayastor
+# sudo microk8s enable rook-ceph
 
 EOF
