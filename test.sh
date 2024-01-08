@@ -1,4 +1,5 @@
-# multipass launch focal --name k8s-master -vvvv --timeout 600
-multipass delete k8s-master && multipass purge
-multipass launch focal --name k8s-master --cloud-init cloud-config.yaml -vvvv --timeout 600
-multipass shell k8s-master
+multipass delete k8s-master-1
+multipass purge
+multipass launch focal --name k8s-master-1 -vvvv --timeout 600
+multipass transfer init.sh k8s-master-1:
+multipass exec k8s-master-1 -d /home/ubuntu -- sudo -i bash init.sh
