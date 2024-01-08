@@ -15,5 +15,10 @@ sudo usermod -a -G microk8s ${user}
 sudo chown -f -R ${user} ~/.kube
 sudo echo "alias kubectl='microk8s kubectl'" >> /home/${user}/.bash_aliases
 
+# Configure user ubuntu
+sudo usermod -a -G microk8s ubuntu
+sudo chown -f -R ubuntu ~/.kube
+sudo echo "alias kubectl='microk8s kubectl'" >> /home/ubuntu/.bash_aliases
+
 EOF
 done

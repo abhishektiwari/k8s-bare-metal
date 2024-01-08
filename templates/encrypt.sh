@@ -1,7 +1,9 @@
 cat <<EOF
 
 # Encrypting secrets at rest in microK8s
-sudo -i -u `head -1 ./data/ssh.users`
+# Use ubuntu as user as script is run by same
+# Alternatively source user from ssh.users list
+# /home/`head -1 ./data/ssh.users`/encrypt.yaml
 
 sudo echo "---
 apiVersion: apiserver.config.k8s.io/v1
@@ -14,7 +16,7 @@ resources:
         keys:
         - name: k8s-crypto
           secret: $(<./data/encryption.key)
-    - identity: {}" > /home/`head -1 ./data/ssh.users`/encrypt.yaml
+    - identity: {}" > /home/ubuntu/encrypt.yaml
 
 # Find location of API Server args file by running: pgrep -an kubelite
 # Find microk8s revision which can be found by running: microk8s version
@@ -27,7 +29,7 @@ then
     sudo echo "Encryption at rest for secret already configured"
 else
     sudo echo "Encryption at rest for secret not configured"
-    sudo echo "--encryption-provider-config=/home/`head -1 ./data/ssh.users`/encrypt.yaml" >> $(<./partials/apiserver)
+    sudo echo "--encryption-provider-config=/home/ubuntu/encrypt.yaml" >> $(<./partials/apiserver)
     # Restart kubelite
     sudo systemctl restart snap.microk8s.daemon-kubelite
     # Replace old secrets - if any

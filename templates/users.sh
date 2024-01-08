@@ -9,6 +9,9 @@ cat <<EOF
 sudo adduser ${user} --gecos "" --disabled-password
 sudo usermod -aG sudo,adm,dialout,cdrom,floppy,audio,dip,video,plugdev,netdev,lxd ${user}
 sudo echo "${user} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+sudo mkdir  /home/${user}/.ssh
+sudo chmod 700 /home/${user}/.ssh
+sudo touch /home/${user}/.ssh/authorized_keys
 sudo echo  "$(<./data/authorized_keys)" >> /home/${user}/.ssh/authorized_keys
 
 EOF
