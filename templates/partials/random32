@@ -1,0 +1,1 @@
+export encryption_key=$(ead -c 32 /dev/urandom | base64);

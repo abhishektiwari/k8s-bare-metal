@@ -5,6 +5,11 @@ cat <<EOF
 # Alternatively source user from ssh.users list
 # /home/`head -1 ./data/ssh.users`/encrypt.yaml
 
+$(<./partials/random32)
+
+if ! test -f /root/encrypt.yaml
+then
+echo "Encryption file does not exist."
 sudo echo "---
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
@@ -15,18 +20,22 @@ resources:
     - aescbc:
         keys:
         - name: k8s-crypto
-          secret: $(<./data/encryption.key)
+          secret: $(<./partials/encryption)
     - identity: {}" > /root/encrypt.yaml
 
 # Find location of API Server args file by running: pgrep -an kubelite
 # Find microk8s revision which can be found by running: microk8s version
+else
+echo "Encryption file exists Skipping encryption key creation."
+fi
+
 
 $(<./partials/revision)
 
 # Append encryption provider to API Server args file 
 if grep -E "^--encryption-provider-config" $(<./partials/apiserver)
 then
-    sudo echo "Encryption at rest for secret already configured"
+    sudo echo "Encryption at rest for secret already configured. Skipping configuraiton."
 else
     sudo echo "Encryption at rest for secret not configured"
     sudo echo "--encryption-provider-config=/root/encrypt.yaml" >> $(<./partials/apiserver)
