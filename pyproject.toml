@@ -1,0 +1,18 @@
+[project]
+name = "mk8sup"
+version = "0.0.1"
+authors = [
+  { name="Abhishek Tiwari", email="abhishek@abhishek-tiwari.com" },
+]
+description = "Bootstrap Microk8s over SSH"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/abhishektiwari/k8s-bare-metal-microk8s"
+Issues = "https://github.com/abhishektiwari/k8s-bare-metal-microk8s/issues"
