@@ -16,5 +16,8 @@ sudo usermod -a -G microk8s ${user}
 sudo chown -f -R ${user} ~/.kube
 sudo echo "alias kubectl='microk8s kubectl'" >> /home/${user}/.bash_aliases
 
+# Postpone updates indefinitely
+sudo snap refresh --hold=forever microk8s
+
 EOF
 done
