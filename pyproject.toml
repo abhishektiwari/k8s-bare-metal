@@ -13,6 +13,18 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+    "click>=8.1",
+    "paramiko>=3.4.0"
+]
+
+[project.scripts]
+mk8sup = "mk8sup:cli"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
 [project.urls]
 Homepage = "https://github.com/abhishektiwari/k8s-bare-metal-microk8s"
 Issues = "https://github.com/abhishektiwari/k8s-bare-metal-microk8s/issues"
